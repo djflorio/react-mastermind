@@ -9,29 +9,6 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      playing: false,
-      code: [0,0,0,0],
-      turn: 0,
-      rows: [
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0]
-      ],
-      currentColor: 1,
-      currentRow: 9,
-      options: [1,2,3,4,5,6,7,8],
-      hasWon: false,
-      hasLost: false
-    };
-
     this.newGame = this.newGame.bind(this);
     this.updateSlot = this.updateSlot.bind(this);
     this.setCurrentColor = this.setCurrentColor.bind(this);
@@ -71,7 +48,7 @@ class Game extends React.Component {
   }
 
   generateCode() {
-    const possible = this.state.options.slice();
+    const possible = [1,2,3,4,5,6,7,8];
     const code = [];
     for (let i = 0; i < 4; i++) {
       const randomIndex = Math.floor(Math.random() * possible.length);
@@ -139,11 +116,7 @@ class Game extends React.Component {
       <div className="game">
         <table className="board">
           <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+            <tr></tr>
             {
               this.state.rows.map((row, i) => (
                 <Row
