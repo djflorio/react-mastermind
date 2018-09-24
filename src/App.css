@@ -1,0 +1,75 @@
+.board {
+  border-collapse: collapse;
+}
+
+.row {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.slot {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: #3E3E3E;
+  margin: 4px;
+  border-radius: 50%;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  margin: 10px 0;
+}
+
+.option-container {
+  text-align: center;
+}
+
+.option {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.color-1 {
+  background-color: #205E35;
+  box-shadow: 0 0 4px #205E35;
+}
+
+.color-2 {
+  background-color: #1E4450;
+  box-shadow: 0 0 4px #1E4450;
+}
+
+.color-3 {
+  background-color: #81572C;
+  box-shadow: 0 0 4px #81572C;
+}
+
+.color-4 {
+  background-color: #81392C;
+  box-shadow: 0 0 4px #81392C;
+}
+
+.color-5 {
+  background-color: #79A688;
+  box-shadow: 0 0 4px #79A688;
+}
+
+.color-6 {
+  background-color: #69848D;
+  box-shadow: 0 0 4px #69848D;
+}
+
+.color-7 {
+  background-color: #E2C5A6;
+  box-shadow: 0 0 4px #E2C5A6;
+}
+
+.color-8 {
+  background-color: #E2AFA6;
+  box-shadow: 0 0 4px #E2AFA6;
+}
