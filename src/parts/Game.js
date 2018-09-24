@@ -2,6 +2,7 @@ import React from 'react';
 
 import Row from './Row';
 import Option from './Option';
+import SlotGroup from './SlotGroup';
 
 
 class Game extends React.Component {
@@ -101,6 +102,7 @@ class Game extends React.Component {
 
     if (rightSpot.length === 4) {
       console.log("FUCK YEAH");
+      this.setState({ playing: false });
     } else {
       console.log("Only color: " + rightColor.length);
       console.log("Right spot: " + rightSpot.length);
@@ -116,7 +118,15 @@ class Game extends React.Component {
       <div className="game">
         <table className="board">
           <tbody>
-            <tr></tr>
+            <tr>
+              <td></td>
+              <td>
+                <SlotGroup
+                  rowNum={0}
+                  slots={this.state.playing ? [0,0,0,0] : this.state.code}
+                />
+              </td>
+            </tr>
             {
               this.state.rows.map((row, i) => (
                 <Row
@@ -130,6 +140,7 @@ class Game extends React.Component {
               ))
             }
             <tr>
+              <td></td>
               <td>
                 <div className="options">
                   {
