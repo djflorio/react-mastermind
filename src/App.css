@@ -17,6 +17,21 @@
   border-radius: 50%;
 }
 
+.row__check {
+  border: solid 2px rgb(105, 163, 141);
+  border-radius: 15px;
+  text-transform: lowercase;
+  color: rgb(105, 163, 141);
+  font-size: 1em;
+  background: none;
+  cursor: pointer;
+}
+
+.row__check:disabled {
+  border: solid 2px #3E3E3E;
+  color: #3E3E3E;
+}
+
 .options {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
