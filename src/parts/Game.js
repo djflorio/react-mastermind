@@ -118,12 +118,9 @@ class Game extends React.Component {
     }
 
     if (rightSpot.length === 4) {
-      console.log("FUCK YEAH");
       this.updateClues(this.state.currentRow, rightColor, rightSpot);
       this.setState({ playing: false });
     } else {
-      console.log("Only color: " + rightColor.length);
-      console.log("Right spot: " + rightSpot.length);
       this.updateClues(this.state.currentRow, rightColor, rightSpot);
     }
     if (this.state.currentRow - 1 < 0) {
