@@ -73,3 +73,30 @@
   background-color: #E2AFA6;
   box-shadow: 0 0 4px #E2AFA6;
 }
+
+.clue-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 3px;
+  list-style: none;
+  padding: 0;
+}
+
+.clue {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.clue--0 {
+  background-color: #3E3E3E;
+}
+
+.clue--1 {
+  background-color: #efefef;
+}
+
+.clue--2 {
+  background-color: rgb(17, 17, 17);
+}

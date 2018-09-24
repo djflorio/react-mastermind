@@ -1,13 +1,14 @@
 import React from 'react';
 
 import SlotGroup from './SlotGroup';
+import ClueGroup from './ClueGroup';
 
 
 const Row = (props) => {
   return (
     <tr className="row">
       <td>
-        clues
+        <ClueGroup clues={props.clues} />
       </td>
       <td>
         <SlotGroup

@@ -1,7 +1,22 @@
 import React from 'react';
 
-import Slot from './Slot';
 
+const Slot = (props) => {
+  const thisClass = "slot color-" + props.value;
+
+  const update = () => {
+    if (props.rowNum !== 0) {
+      props.updateSlot(props.rowNum, props.colNum);
+    }
+  }
+
+  return (
+    <li
+      className={thisClass}
+      onClick={update}>
+    </li>
+  );
+}
 
 const SlotGroup = (props) => {
   return (

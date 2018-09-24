@@ -14,6 +14,7 @@ class Game extends React.Component {
     this.updateSlot = this.updateSlot.bind(this);
     this.setCurrentColor = this.setCurrentColor.bind(this);
     this.checkRow = this.checkRow.bind(this);
+    this.updateClues = this.updateClues.bind(this);
   }
 
   componentWillMount() {
@@ -23,23 +24,20 @@ class Game extends React.Component {
   newGame() {
 
     const code = this.generateCode();
+    const rows = [];
+
+    for (let i=0; i < 10; i++) {
+      rows.push({
+        clues: [0,0,0,0],
+        inputs: [0,0,0,0]
+      });
+    }
 
     this.setState({
       playing: true,
       code: code,
       turn: 0,
-      rows: [
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0],
-        [0,0,0,0]
-      ],
+      rows: rows,
       currentColor: 1,
       currentRow: 9,
       options: [1,2,3,4,5,6,7,8],
@@ -62,7 +60,26 @@ class Game extends React.Component {
   updateSlot(row, col) {
     if (row !== this.state.currentRow) { return; }
     const newRows = this.state.rows.slice();
-    newRows[row][col] = this.state.currentColor;
+    newRows[row].inputs[col] = this.state.currentColor;
+    this.setState({
+      rows: newRows
+    });
+  }
+
+  updateClues(row, rightColor, rightSpot) {
+    const newRows = this.state.rows.slice();
+    const newRow = newRows[row];
+    let currentIndex = 0;
+    for (let i=0; i < rightSpot.length; i++) {
+      newRow.clues[currentIndex] = 2;
+      currentIndex += 1;
+    }
+
+    for (let i=0; i < rightColor.length; i++) {
+      newRow.clues[currentIndex] = 1;
+      currentIndex += 1;
+    }
+    
     this.setState({
       rows: newRows
     });
@@ -75,7 +92,7 @@ class Game extends React.Component {
   }
 
   checkRow() {
-    const checkRow = this.state.rows[this.state.currentRow];
+    const checkRow = this.state.rows[this.state.currentRow].inputs;
     if (checkRow.indexOf(0) !== -1) { return; }
 
     const rightColor = [];
@@ -102,10 +119,12 @@ class Game extends React.Component {
 
     if (rightSpot.length === 4) {
       console.log("FUCK YEAH");
+      this.updateClues(this.state.currentRow, rightColor, rightSpot);
       this.setState({ playing: false });
     } else {
       console.log("Only color: " + rightColor.length);
       console.log("Right spot: " + rightSpot.length);
+      this.updateClues(this.state.currentRow, rightColor, rightSpot);
     }
     if (this.state.currentRow - 1 < 0) {
       this.setState({ playing: false });
@@ -132,7 +151,8 @@ class Game extends React.Component {
                 <Row
                   key={"row" + i}
                   rowNum={i}
-                  slots={row}
+                  slots={row.inputs}
+                  clues={row.clues}
                   updateSlot={this.updateSlot}
                   checkRow={this.checkRow}
                   currentRow={this.state.currentRow}
