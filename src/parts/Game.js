@@ -96,30 +96,34 @@ class Game extends React.Component {
   }
 
   checkRow() {
-    let rightColor = 0;
-    let rightSpot = 0;
-    const checked = [];
+    const rightColor = [];
+    const rightSpot = [];
     const code = this.state.code;
     const checkRow = this.state.rows[this.state.currentRow];
 
     for (let i = code.length; i--;) {
       const slot = checkRow[i];
-      if (checked.indexOf(slot) === -1) {
-        if (slot === code[i]) {
-          rightSpot += 1;
-          checked.push(slot);
-        } else if (code.indexOf(slot) !== -1) {
-          rightColor += 1;
-          checked.push(slot);
+
+      const rightColorIndex = rightColor.indexOf(slot);
+      const rightSpotIndex = rightSpot.indexOf(slot);
+      const inRightColorList = rightColorIndex !== -1;
+      const inRightSpotList = rightSpotIndex !== -1;
+
+      if (slot === code[i]) {
+        rightSpot.push(slot);
+        if (inRightColorList) {
+          rightColor.splice(rightColorIndex, 1);
         }
+      } else if (code.indexOf(slot) !== -1 && !inRightColorList && !inRightSpotList) {
+        rightColor.push(slot);
       }
     }
 
-    if (rightSpot === 4) {
+    if (rightSpot.length === 4) {
       console.log("FUCK YEAH");
     } else {
-      console.log("Only color: " + rightColor);
-      console.log("Right spot: " + rightSpot);
+      console.log("Only color: " + rightColor.length);
+      console.log("Right spot: " + rightSpot.length);
     }
 
     this.setState({ currentRow: this.state.currentRow - 1 });
