@@ -71,7 +71,7 @@ class Game extends React.Component {
   }
 
   generateCode() {
-    const possible = [1,2,3,4,5,6,7,8];
+    const possible = this.state.options.slice();
     const code = [];
     for (let i = 0; i < 4; i++) {
       const randomIndex = Math.floor(Math.random() * possible.length);
@@ -82,6 +82,7 @@ class Game extends React.Component {
   }
 
   updateSlot(row, col) {
+    if (row !== this.state.currentRow) { return; }
     const newRows = this.state.rows.slice();
     newRows[row][col] = this.state.currentColor;
     this.setState({
@@ -96,11 +97,13 @@ class Game extends React.Component {
   }
 
   checkRow() {
+    const checkRow = this.state.rows[this.state.currentRow];
+    if (checkRow.indexOf(0) !== -1) { return; }
+
     const rightColor = [];
     const rightSpot = [];
     const code = this.state.code;
-    const checkRow = this.state.rows[this.state.currentRow];
-
+    
     for (let i = code.length; i--;) {
       const slot = checkRow[i];
 
@@ -125,7 +128,9 @@ class Game extends React.Component {
       console.log("Only color: " + rightColor.length);
       console.log("Right spot: " + rightSpot.length);
     }
-
+    if (this.state.currentRow - 1 < 0) {
+      this.setState({ playing: false });
+    }
     this.setState({ currentRow: this.state.currentRow - 1 });
   }
 
