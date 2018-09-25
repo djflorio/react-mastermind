@@ -11,5 +11,5 @@ You have 10 guesses to figure out the secret 4-color code.
 * For every color that is correct, and in the correct slot, a black light will appear to the left of your guess.
 
 Notes:
-* The position of the black/white lights does not correspond with your guess.
+* The position of the black/white lights is not related to your guess, only the number of black/white lights.
 * The secret code doesn't contain any duplicate colors.
