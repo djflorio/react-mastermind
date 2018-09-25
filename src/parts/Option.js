@@ -3,7 +3,12 @@ import React from 'react';
 
 const Option = (props) => {
 
-  const thisClass = "option color-" + props.value;
+  let thisClass = "option color-" + props.value;
+
+  if (props.currentColor === props.value) {
+    thisClass += " option--active";
+  }
+
   return (
     <div
       className={thisClass}

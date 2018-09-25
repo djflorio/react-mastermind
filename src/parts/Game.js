@@ -166,6 +166,7 @@ class Game extends React.Component {
                       <Option
                         key={"option" + option}
                         value={option}
+                        currentColor={this.state.currentColor}
                         setCurrentColor={this.setCurrentColor}
                       />
                     ))

@@ -2,7 +2,11 @@ import React from 'react';
 
 
 const Slot = (props) => {
-  const thisClass = "slot color-" + props.value;
+  let thisClass = "slot color-" + props.value;
+
+  if (props.currentRow === props.rowNum) {
+    thisClass += " slot--active";
+  }
 
   const update = () => {
     if (props.rowNum !== 0) {
@@ -29,6 +33,7 @@ const SlotGroup = (props) => {
             rowNum={props.rowNum}
             colNum={i}
             updateSlot={props.updateSlot}
+            currentRow={props.currentRow}
           />
         ))
       }
