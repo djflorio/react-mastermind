@@ -158,18 +158,19 @@ class Game extends React.Component {
             }
             <tr>
               <td></td>
-              <td>
-                <div className="options">
+              <td className="options-outer">
+                <div className="options-inner">
+                  <div className="options">
                   {
                     this.state.options.map(option => (
-                      <div key={"option" + option} className="option-container">
-                        <Option
-                          value={option}
-                          setCurrentColor={this.setCurrentColor}
-                        />
-                      </div>
+                      <Option
+                        key={"option" + option}
+                        value={option}
+                        setCurrentColor={this.setCurrentColor}
+                      />
                     ))
                   }
+                  </div>
                 </div>
               </td>
             </tr>

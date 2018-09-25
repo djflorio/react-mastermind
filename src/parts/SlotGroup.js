@@ -11,16 +11,16 @@ const Slot = (props) => {
   }
 
   return (
-    <li
+    <div
       className={thisClass}
       onClick={update}>
-    </li>
+    </div>
   );
 }
 
 const SlotGroup = (props) => {
   return (
-    <ul className="slot-group">
+    <div className="slot-group">
       {
         props.slots.map((slot, i) => (
           <Slot
@@ -32,7 +32,7 @@ const SlotGroup = (props) => {
           />
         ))
       }
-    </ul>
+    </div>
   );
 }
 
