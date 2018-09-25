@@ -138,7 +138,7 @@ class Game extends React.Component {
               <td></td>
               <td>
                 <SlotGroup
-                  rowNum={0}
+                  rowNum={-1}
                   slots={this.state.playing ? [0,0,0,0] : this.state.code}
                 />
               </td>

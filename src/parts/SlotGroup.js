@@ -9,7 +9,7 @@ const Slot = (props) => {
   }
 
   const update = () => {
-    if (props.rowNum !== 0) {
+    if (props.rowNum >= 0) {
       props.updateSlot(props.rowNum, props.colNum);
     }
   }
