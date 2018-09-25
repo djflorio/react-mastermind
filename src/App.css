@@ -1,3 +1,43 @@
+.info-bar {
+  background-color: rgb(172, 192, 175);
+  display: flex;
+  align-items: center;
+  font-family: 'Lato', sans-serif;
+}
+
+.info-bar__logo {
+  width: 75px;
+  animation: App-logo-spin infinite 20s linear;
+}
+
+.info-bar__title {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  color: #232323;
+  font-size: 1.5em;
+}
+
+.info-bar__subtitle {
+  display: inline-block;
+  margin: 0 0 0 10px;
+  font-size: 1em;
+}
+
+.info-bar__link {
+  text-decoration: none;
+  color: #234234;
+}
+
+.game {
+  text-align: center;
+}
+
+.board {
+  display: inline-block;
+  margin-top: 30px;
+}
+
 .slot-group {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -143,4 +183,9 @@
 .clue--2 {
   background-color: rgb(0, 0, 0);
   box-shadow: 0 0 3px rgb(85, 85, 85);
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
