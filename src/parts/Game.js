@@ -3,6 +3,7 @@ import React from 'react';
 import Row from './Row';
 import Option from './Option';
 import SlotGroup from './SlotGroup';
+import GameOver from './GameOver';
 
 
 class Game extends React.Component {
@@ -41,8 +42,7 @@ class Game extends React.Component {
       currentColor: 1,
       currentRow: 9,
       options: [1,2,3,4,5,6,7,8],
-      hasWon: false,
-      hasLost: false
+      hasWon: false
     });
   }
 
@@ -119,7 +119,10 @@ class Game extends React.Component {
 
     if (rightSpot.length === 4) {
       this.updateClues(this.state.currentRow, rightColor, rightSpot);
-      this.setState({ playing: false });
+      this.setState({ 
+        playing: false,
+        hasWon: true
+      });
     } else {
       this.updateClues(this.state.currentRow, rightColor, rightSpot);
     }
@@ -132,11 +135,17 @@ class Game extends React.Component {
   render() {
     return (
       <div className="game">
+        <GameOver
+          newGame={this.newGame}
+          playing={this.state.playing}
+          guesses={9-this.state.currentRow}
+          hasWon={this.state.hasWon}
+        />
         <table className="board">
           <tbody>
             <tr>
               <td></td>
-              <td>
+              <td className="game__code">
                 <SlotGroup
                   rowNum={-1}
                   slots={this.state.playing ? [0,0,0,0] : this.state.code}
